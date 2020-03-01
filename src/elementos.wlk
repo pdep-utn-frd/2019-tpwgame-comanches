@@ -88,19 +88,23 @@ object lola {
 	method moverse() {
 		position = direccion.siguiente(position)
 	}
-	method perritosEnElCorral(perrito) {
-		if (perrito.position().x().between(5,9) and perrito.position().y().between(8,12)) //{ 
-//			console.println(perrito)
+	method perritosEnCorral(perrito) {
+		if (perrito.position().x().between(5,9) and perrito.position().y().between(8,12)){ 
+			//console.println(perrito)
 			perritosEnCorral.add(perrito)
-			return true
-//		} else {
-//			console.println(perrito)
-//			console.println(perritosEnCorral.map{c => c.position()})
-//		}		
+			console.println(perritosEnCorral.size())
+			if (self.perritosEnCorral().size() == 5 and not game.hasVisual(salida)){
+				console.println("salida agregada")
+				game.addVisual(salida)
+			}
+		}
 	}
-	method cargarLaSalida() {
-		if (perritosEnCorral.size() == 5) 		 
-			game.addVisual(salida)
+	method fin(){
+		console.println(":D")
+		if (self.position().x() == 10 and self.position().y() == 12 and game.hasVisual(salida)){
+			console.println("Juego terminado")
+			game.addVisual(fin)
+		}
 	}
 }
 
@@ -113,7 +117,7 @@ object superLola {
 }
 
 object salida {	
-	var property position = game.at(9,12)	
+	var property position = game.at(10,12)	
 	//var property image = "salida.png"
 
 	method image() = "salida.png" 
