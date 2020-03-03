@@ -4,8 +4,8 @@ import direcciones.*
 
 class Perritos {	
 	var property position = game.at(1.randomUpTo(game.width()-1).truncate(0),
-								1.randomUpTo(game.height()-1).truncate(0))					
-//	var property image = "perrito"
+								1.randomUpTo(game.height()-1).truncate(0))	
+	var property image = "imagen"				
  	
  	method seMueve(direccion) {
 		self.validarUnaPosicionVacia(direccion) 	
@@ -20,34 +20,16 @@ class Perritos {
 		if (!posicionVacia) 
 			throw new Exception(message = "Algo no deja pasar al perro.") 
 	}	
-	method puedePisarte() = false
-	method esPerrito() = true
 }
 
-object tina inherits Perritos {
-	method image() = "tina.png"
-	//var property image = "tina.png" 
-}
-
-object mora inherits Perritos {
-	method image() = "mora.png" 
-}
-
-object liza inherits Perritos {
-	method image() = "liza.png" 
-}
-
-object jana inherits Perritos {
-	method image() = "jana.png" 
-}
-
-object ciro inherits Perritos {
-	method image() = "ciro.png" 
-}
+const tina = new Perritos (image = "tina.png")
+const liza = new Perritos (image = "liza.png")
+const ciro = new Perritos (image = "ciro.png")
+const mora = new Perritos (image = "mora.png")
+const jana = new Perritos (image = "jana.png")
 
 object lola {
 	var property position = game.at(7, 9)
-	//const property image = "lola.png"
 	var property perritosEnCorral = #{}
 	var direccion = arriba 
 	
@@ -87,6 +69,7 @@ object lola {
 	}
 	method moverse() {
 		position = direccion.siguiente(position)
+		self.fin()
 	}
 	method perritosEnCorral(perrito) {
 		if (perrito.position().x().between(5,9) and perrito.position().y().between(8,12)){ 
@@ -111,8 +94,6 @@ object lola {
 object superLola {
 	var property position = lola.position()	
 	
-	method esCaja() = false
-	
 	method seMueve(direccion) {}
 }
 
@@ -121,8 +102,6 @@ object salida {
 	//var property image = "salida.png"
 
 	method image() = "salida.png" 
-
-	method esCaja() = false
 	
 	method seMueve(direccion) {}
 }
