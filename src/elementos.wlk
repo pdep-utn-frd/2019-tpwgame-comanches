@@ -48,24 +48,20 @@ object lola {
 		position = direccion.opuesto().siguiente(position)	
 	}
 	method moverseArriba() { 
-		direccion = arriba
-		if (self.position().y() != game.height()-1) 
-			self.moverse()
+		direccion = arriba 
+		self.moverse()
 	}
 	method moverseAbajo() {
-		direccion = abajo
-		if (self.position().y() != 0) 
-			self.moverse()
+		direccion = abajo 
+		self.moverse()
 	}
 	method moverseIzquierda() {
-		direccion = izquierda
-		if (self.position().x() != 0) 
-			self.moverse()
+		direccion = izquierda 
+		self.moverse()
 	}
 	method moverseDerecha() {
-		direccion = derecha
-		if (self.position().x() != game.width()-1) 
-			self.moverse()
+		direccion = derecha 
+		self.moverse()
 	}
 	method moverse() {
 		position = direccion.siguiente(position)
